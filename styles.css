@@ -813,6 +813,40 @@ h3 {
     transform: translateY(-3px);
 }
 
+.tarjeta-producto h3 {
+    margin: 0;
+    padding: 18px 18px 20px;
+    color: var(--color-marron-oscuro);
+    font-size: 17px;
+    text-align: center;
+}
+
+.tarjeta-producto {
+    overflow: hidden;
+    border-radius: var(--radio);
+    background: var(--color-blanco);
+    box-shadow: var(--sombra-suave);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(77, 45, 38, 0.12);
+}
+
+.tarjeta-producto img {
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.tarjeta-producto h3 {
+    margin: 0;
+    padding: 18px 18px 20px;
+    color: var(--color-marron-oscuro);
+    font-size: 17px;
+}
 
 /* ---------- Lista de precios ---------- */
 .lista-precios {
