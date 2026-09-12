@@ -34,29 +34,29 @@ const preciosProductos = {
 function procesarPedido() {
     const nombre = document.getElementById("nombreCliente").value;
     const producto = document.getElementById("productoSeleccionado").value;
-    const cantidad = document.getElementById("cantidadProducto").value;
+    const cantidad = Number(document.getElementById("cantidadProducto").value);
     const tipo = document.getElementById("tipoPedido").value;
 
-    if (nombre === "" || producto === "" || cantidad === "" || tipo === "") {
+    if (nombre === "" || producto === "" || !cantidad || tipo === "") {
         alert("Por favor, completa todos los campos del pedido para continuar.");
         return;
     }
 
+    // Calculo del total segun el precio unitario y la cantidad
+    const precioUnitario = preciosProductos[producto];
+    const subtotal = precioUnitario * cantidad;
+
     let mensajeLogistica = "";
 
     if (tipo === "delivery") {
-        if (cantidad >= 3) {
-            mensajeLogistica = "¡Felicidades! Al pedir 3 o más productos, tu delivery es GRATIS. Nos contactaremos al 987790205 para coordinar la dirección.";
+        if (subtotal > 50) {
+            mensajeLogistica = "¡Felicidades! Tu compra supera los S/ 50, por lo que tu delivery es GRATIS. Nos contactaremos al 987790205 para coordinar la dirección.";
         } else {
             mensajeLogistica = "El costo de delivery se calculará según tu ubicación.";
         }
     } else if (tipo === "recojo") {
         mensajeLogistica = "Tu pedido estará listo para recojo en nuestra tienda. ¡Te esperamos!";
     }
-
-    // Calculo del total segun el precio unitario y la cantidad
-    const precioUnitario = preciosProductos[producto];
-    const subtotal = precioUnitario * cantidad;
 
     const mensajeFinal = `¡Hola, ${nombre}! 🍰
 
